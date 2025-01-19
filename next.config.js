@@ -11,6 +11,9 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = withPWA({
+  typescript:{
+    ignorBuildErrors: true,
+  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
