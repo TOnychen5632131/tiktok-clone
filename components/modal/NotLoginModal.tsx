@@ -7,6 +7,22 @@ interface Props {
 }
 
 export default function NotLoginModal({ onClose }: Props) {
+  const handleLogin = async () => {
+    // 调用 signIn，并添加 callbackUrl 以确保登录后跳转回当前页面
+    const res = await signIn('google', { callbackUrl: window.location.origin });
+    
+    // 打印结果以调试
+    console.log('Sign-in response:', res);
+    
+    // 如果登录成功，可以选择关闭模态框
+    if (res?.ok) {
+      onClose(); // 关闭模态框
+    } else {
+      // 处理登录失败的情况
+      console.error('Login failed');
+    }
+  };
+
   return (
     <>
       <Transition appear show={true} as={Fragment}>
@@ -54,7 +70,7 @@ export default function NotLoginModal({ onClose }: Props) {
                         Close
                       </button>
                       <button
-                        onClick={() => signIn('google')}
+                        onClick={handleLogin} // 使用新的登录处理函数
                         className='btn-primary px-6 py-2'
                       >
                         Login

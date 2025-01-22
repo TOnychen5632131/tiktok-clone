@@ -1,7 +1,7 @@
 export default function LogoDark() {
   return (
     <svg
-      xmlns='http://www.w3.org/2000/svg'
+      xmlns=''
       fill='none'
       viewBox='0 0 118 30'
       width='118'
